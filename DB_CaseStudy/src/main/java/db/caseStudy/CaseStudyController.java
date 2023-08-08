@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.xml.sax.SAXException;
-import readFromXml.Service;
+import services.ReadFromXml;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
@@ -16,8 +16,8 @@ public class CaseStudyController {
     @RequestMapping(path = "/trackSections/{ril100}/{trainNumber}/{number}", method = RequestMethod.GET)
     String getTrackSection(@PathVariable String ril100, @PathVariable Integer trainNumber, @PathVariable Integer number) throws IOException, ParserConfigurationException, SAXException {
         // http://localhost:8080/trackSections/ril100/1/2
-        Service service = new Service();
-        return service.run(""+trainNumber, ""+number);
+        ReadFromXml readFromXml = new ReadFromXml();
+        return readFromXml.run(""+trainNumber, ""+number);
     }
 /*
     @RequestMapping(value="/trackSections", method = RequestMethod.GET)

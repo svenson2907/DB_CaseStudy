@@ -1,4 +1,4 @@
-package readFromXml;
+package services;
 
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -8,7 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
-public class Service {
+public class ReadFromXml {
 
     public static String run(String trainNumber, String waggonNumber) throws IOException, SAXException, ParserConfigurationException {
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
