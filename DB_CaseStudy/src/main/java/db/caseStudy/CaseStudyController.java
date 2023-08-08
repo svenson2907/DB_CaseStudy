@@ -12,11 +12,6 @@ import java.io.IOException;
 
 @RestController
 public class CaseStudyController {
-    private final Repository repository;
-
-    public CaseStudyController(Repository repository) {
-        this.repository = repository;
-    }
 
     @RequestMapping(path = "/trackSections/{ril100}/{trainNumber}/{number}", method = RequestMethod.GET)
     String getTrackSection(@PathVariable String ril100, @PathVariable Integer trainNumber, @PathVariable Integer number) throws IOException, ParserConfigurationException, SAXException {
