@@ -2,11 +2,10 @@ package db.caseStudy;
 
 import org.springframework.web.bind.annotation.*;
 import org.xml.sax.SAXException;
-import readFromXml.Start;
+import services.ReadXml;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.Map;
 
 @RestController
 public class CaseStudyController {
@@ -19,8 +18,8 @@ public class CaseStudyController {
     @RequestMapping(path = "/trackSections/{ril100}/{trainNumber}/{number}", method = RequestMethod.GET)
     String getTrackSection(@PathVariable String ril100, @PathVariable Integer trainNumber, @PathVariable Integer number) throws IOException, ParserConfigurationException, SAXException {
         // http://localhost:8080/trackSections/ril100/1/2
-        Start start = new Start();
-        return start.run(""+trainNumber, ""+number);
+        ReadXml readXml = new ReadXml();
+        return readXml.run(""+trainNumber, ""+number);
     }
 /*
     @RequestMapping(value="/trackSections", method = RequestMethod.GET)
