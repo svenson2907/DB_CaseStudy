@@ -28,17 +28,17 @@ public class ReadFromXml {
                             if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getNodeName().replaceAll("\\s", "").equals("#text")) {    //checks w-th element for redundant "#text"-element
                                 for(int j=0; j<doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().getLength(); ++j) {    //iterates indices of descendant elements to train-Tags t-th and of them i-th and of them w-th children
                                     if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().equals("#text")) {    //checks j-th elements nodeName for redundant "#text"-element
-                                        if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().replaceAll("\\s", "").equals("sections")) {
-                                            if (!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().equals("#text")) {
-                                                section = doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().replaceAll("\\s", "");
+                                        if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().replaceAll("\\s", "").equals("sections")) {    //checks j-th element for "sections"-tag
+                                            if (!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().equals("#text")) {    //checks j-th element for redundant "#text"-element
+                                                section = doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().replaceAll("\\s", "");    //section got found
                                             }
                                         }
                                     }
-                                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().replaceAll("\\s", "").equals("number") &&
-                                       doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().replaceAll("\\s", "").equals(waggonNumber)) {
+                                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().replaceAll("\\s", "").equals("number") &&           //checks if j-th NodeName equals to "number"
+                                       doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().replaceAll("\\s", "").equals(waggonNumber)) {    //checks if j-th text equals to waggonNumber
                                         waggonNumberPasst = true;
                                         if(trainNumberPasst) {
-                                            return "{ \"sections\": [\""+section+"\"]}";
+                                            return "{ \"sections\": [\""+section+"\"]}";    //if so section got found
                                         }
                                     }else {
                                         waggonNumberPasst = false;
