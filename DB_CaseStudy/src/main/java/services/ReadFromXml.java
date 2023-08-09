@@ -13,7 +13,6 @@ public class ReadFromXml {
     public static String run(String trainNumber, String waggonNumber) throws IOException, SAXException, ParserConfigurationException {
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document doc = builder.parse("src\\main\\resources\\FF_2017-12-01_10-47-17.xml");
-        doc.getDocumentElement().normalize();
         String section="";
         boolean trainNumberPasst=false;
         for(int t=0; t<doc.getElementsByTagName("train").getLength(); ++t) {    //iterates indices of descendant elements to train-Tag
