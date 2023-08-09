@@ -16,18 +16,18 @@ public class ReadFromXml {
         doc.getDocumentElement().normalize();
         String section="";
         boolean trainNumberPasst=false, waggonNumberPasst=false;
-        for(int t=0; t<doc.getElementsByTagName("train").getLength(); ++t) {
+        for(int t=0; t<doc.getElementsByTagName("train").getLength(); ++t) {    //iterates indices of descendant elements to train-Tag
             trainNumberPasst = false;
-            for(int i=0; i<doc.getElementsByTagName("train").item(t).getChildNodes().getLength(); ++i) {
-                if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getNodeName().replaceAll("\\s","").equals("#text")) {
-                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getTextContent().replaceAll("\\s", "").equals(trainNumber)) {
+            for(int i=0; i<doc.getElementsByTagName("train").item(t).getChildNodes().getLength(); ++i) {    //iterates indices of descendant elements to train-Tags t-th child
+                if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getNodeName().replaceAll("\\s","").equals("#text")) {    //checks i-th element for redundant "#text"-element
+                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getTextContent().replaceAll("\\s", "").equals(trainNumber)) {    //check i-th element whether it is the searched train number
                         trainNumberPasst = true;
                     }
-                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getNodeName().replaceAll("\\s", "").equals("waggons")) {
-                        for(int w=0; w<doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().getLength(); ++w) {
-                            if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getNodeName().replaceAll("\\s", "").equals("#text")) {
-                                for(int j=0; j<doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().getLength(); ++j) {
-                                    if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().equals("#text")) {
+                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getNodeName().replaceAll("\\s", "").equals("waggons")) {    //checks i-th element for "waggons"-tag
+                        for(int w=0; w<doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().getLength(); ++w) {    //iterates indices of descendant elements to train-Tags t-th and of them i-th children
+                            if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getNodeName().replaceAll("\\s", "").equals("#text")) {    //checks w-th element for redundant "#text"-element
+                                for(int j=0; j<doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().getLength(); ++j) {    //iterates indices of descendant elements to train-Tags t-th and of them i-th and of them w-th children
+                                    if(!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().equals("#text")) {    //checks j-th elements nodeName for redundant "#text"-element
                                         if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().replaceAll("\\s", "").equals("sections")) {
                                             if (!doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().equals("#text")) {
                                                 section = doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().replaceAll("\\s", "");
