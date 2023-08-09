@@ -15,7 +15,6 @@ public class CaseStudyController {
 
     @RequestMapping(path = "/trackSections/{ril100}/{trainNumber}/{number}", method = RequestMethod.GET)
     String getTrackSection(@PathVariable String ril100, @PathVariable Integer trainNumber, @PathVariable Integer number) throws IOException, ParserConfigurationException, SAXException {
-        // http://localhost:8080/trackSections/ril100/1/2
         ReadFromXml readFromXml = new ReadFromXml();
         return readFromXml.run(""+trainNumber, ""+number);
     }
