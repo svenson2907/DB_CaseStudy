@@ -34,8 +34,8 @@ public class ReadFromXml {
                                             }
                                         }
                                     }
-                                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().replaceAll("\\s", "").equals("number") &&           //checks if j-th NodeName equals to "number"
-                                       doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().replaceAll("\\s", "").equals(waggonNumber)) {    //checks if j-th text equals to waggonNumber
+                                    if(doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getNodeName().replaceAll("\\s", "").equals("number") &&           //checks if j-th NodeName equals to "number" ANS
+                                       doc.getElementsByTagName("train").item(t).getChildNodes().item(i).getChildNodes().item(w).getChildNodes().item(j).getTextContent().replaceAll("\\s", "").equals(waggonNumber)) {    //j-th text equals to waggonNumber
                                         waggonNumberPasst = true;
                                         if(trainNumberPasst) {
                                             return "{ \"sections\": [\""+section+"\"]}";    //if so section got found
