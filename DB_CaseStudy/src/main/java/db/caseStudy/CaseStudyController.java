@@ -19,10 +19,4 @@ public class CaseStudyController {
         ReadFromXml readFromXml = new ReadFromXml();
         return readFromXml.run(""+trainNumber, ""+number);
     }
-/*
-    @RequestMapping(value="/trackSections", method = RequestMethod.GET)
-    String getParams(@RequestParam Map<String, String> params ) {
-        // http://localhost:8080/trackSections?station=ril100&train=1&waggon=2
-        return params.toString();
-    }*/
 }
