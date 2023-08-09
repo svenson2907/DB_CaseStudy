@@ -14,11 +14,6 @@ public class ReadFromXml {
         DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document doc = builder.parse("src\\main\\resources\\FF_2017-12-01_10-47-17.xml");
         doc.getDocumentElement().normalize();
-//        String trainNumber="2310", waggonNumber="10";
-//        String trainNumber="2278", waggonNumber="12";
-//        String trainNumber="12", waggonNumber="29";
-//        String trainNumber="820", waggonNumber="39", section="";
-//        String trainNumber="1088", waggonNumber="7", section="";
         String section="";
         boolean trainNumberPasst=false, waggonNumberPasst=false;
         for(int t=0; t<doc.getElementsByTagName("train").getLength(); ++t) {
@@ -56,9 +51,5 @@ public class ReadFromXml {
             }
         }
         return "Data not found";
-    }
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
-//        System.out.println(run(new File("src\\main\\resources\\FF_2017-12-01_10-47-17.xml")));
-        System.out.println(run("2278","12"));
     }
 }
